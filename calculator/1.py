@@ -1,10 +1,11 @@
-from ast import operator
 from tkinter import *
 import tkinter as tk
 import math as m
 
+
+
 root=Tk()
-root.title("CALCULATOR")    
+root.title("CALCULATOR") 
 root.resizable(0,0)
 
 
@@ -12,6 +13,7 @@ def click(char):
     global operator
     operator+=str(char)
     InputText.set(operator)
+
 
 def Clearall():
     global operator
@@ -24,13 +26,13 @@ def Deleteone():
     operator=text
     InputText.set(text)
 
-def percent():
+def percent ():
     global operator
     temp=str(eval(operator+'/100'))
     operator=temp
     InputText.set(temp)
 
-def square():
+def square ():
     global operator
     if int(operator)>=0:
         temp = str(eval(operator+'**(1/2)'))
@@ -41,26 +43,27 @@ def square():
     
 def sin():
     global operator
-    result=str(m.sin(m.radians(int(operator))))
+    result=str(m.sin(m.radians(float(operator))))
     operator=result
     InputText.set(result)
 
 def cos():
     global operator
-    result=str(m.cos(m.radians(int(operator))))
+    result=str(m.cos(m.radians(float(operator))))
     operator=result
     InputText.set(result)
 
 def tan():
     global operator
-    result=str(m.tan(m.radians(int(operator))))
+    result=str(m.tan(m.radians(float(operator))))
     operator=result
     InputText.set(result)
 
 def cot():
     global operator
-    result=str(m.cot(m.radians(int(operator))))
-    operator=result
+    result1=int(m.cos(m.radians(float(operator))))
+    result2=int(m.sin(m.radians(float(operator))))
+    operator=result1/result2
     InputText.set(result)
 
 def equal1():
@@ -150,5 +153,3 @@ point=Button(root,font=("arial",20,"bold"),fg="white",bg="Lightskyblue1",text=".
 equal=Button(root,font=("arial",20,"bold"),fg="white",bg="gray",text="=",command=equal1).grid(row=9,columnspan=2,column=2,sticky="nsew")
 
 root.mainloop()
-
-
